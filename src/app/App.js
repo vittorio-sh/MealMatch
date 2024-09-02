@@ -1,13 +1,26 @@
 import '../styles/App.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import FilterControls from '../components/FilterControls.js';
 import IngredientList from '../components/IngredientList.js';
 import Title from '../components/Title.js';
 import Nav from "../components/Nav.js";
 import RecipeDetails from '../components/RecipeDetails.js';
 import DisplayResult from "../components/DisplayResult.js";
-import { useRef } from 'react';
-//fixed
+
+// Define sortRecipes outside of the App component
+function sortRecipes(recipes, filterType) {
+    return [...recipes].sort((a, b) => {
+        if (filterType === "calories") {
+            return a.calories - b.calories;
+        } else if (filterType === "ingredientCount") {
+            return a.ingredientCount - b.ingredientCount;
+        } else if (filterType === "protein%") {
+            return b.proteinAmount - a.proteinAmount;
+        }
+        return 0;
+    });
+}
+
 function App() {
     const [activePage, setPage] = useState("page1");
     const [filterType, setFilterType] = useState('protein');
@@ -17,7 +30,7 @@ function App() {
         return JSON.parse(localStorage.getItem('cartIngredients') || '[]');
     });
 
-    const prevRecipeList = useRef(); // Add this line to use a ref for tracking the previous recipe list
+    const prevRecipeList = useRef();
 
     useEffect(() => {
         localStorage.setItem('cartIngredients', JSON.stringify(cartIngredients));
@@ -25,52 +38,11 @@ function App() {
 
     useEffect(() => {
         if (activePage === "page2" && recipeList.length > 0 && JSON.stringify(recipeList) !== JSON.stringify(prevRecipeList.current)) {
-            const sortedRecipes = sortRecipes(recipeList);
+            const sortedRecipes = sortRecipes(recipeList, filterType);
             setRecipeList(sortedRecipes);
         }
-        prevRecipeList.current = recipeList; // Update the ref after each effect run
-    }, [filterType, activePage, recipeList]); // Include recipeList in dependencies
-
-    
-    
-
-    const changePage = () => {
-        if (activePage === "page1") {
-            if (cartIngredients.length === 0) {
-                alert("No ingredients picked");
-            } else {
-                findRecipes();
-                setPage("page2");
-            }
-        } else {
-            clearCartAndReturnHome();
-        }
-    };
-
-    const clearCartAndReturnHome = () => {
-        setCartIngredients([]);
-        setRecipeList([]);
-        setPage("page1");
-        localStorage.removeItem('cartIngredients');  // Explicitly clear localStorage
-        console.log("Returning home and clearing cart ingredients");
-    };
-    
-    
-
-    function sortRecipes(recipes) {
-        return [...recipes].sort((a, b) => {
-            if (filterType === "calories") {
-                return a.calories - b.calories;
-            } else if (filterType === "ingredientCount") {
-                return a.ingredientCount - b.ingredientCount;
-            } else if (filterType === "protein%") {
-                return b.proteinAmount - a.proteinAmount;
-            }
-            return 0;
-        });
-    }
-    
-    
+        prevRecipeList.current = recipeList;
+    }, [filterType, activePage, recipeList]);
 
     useEffect(() => {
         if (activePage === "page1") {
@@ -110,6 +82,27 @@ function App() {
                 alert('Failed to fetch recipes. Please try again.');
             });
     }
+
+    const changePage = () => {
+        if (activePage === "page1") {
+            if (cartIngredients.length === 0) {
+                alert("No ingredients picked");
+            } else {
+                findRecipes();
+                setPage("page2");
+            }
+        } else {
+            clearCartAndReturnHome();
+        }
+    };
+
+    const clearCartAndReturnHome = () => {
+        setCartIngredients([]);
+        setRecipeList([]);
+        setPage("page1");
+        localStorage.removeItem('cartIngredients');
+        console.log("Returning home and clearing cart ingredients");
+    };
 
     return (
         <div className="App">
