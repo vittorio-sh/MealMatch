@@ -1,5 +1,4 @@
 import "../styles/displayInfo.css";
-import mealMatcherLogo from "../assets/images/mealMatcherLogo.webp";
 
 export default function DisplayResult({ cartIngredients, recipeList = []}) {
     return (
