@@ -7,19 +7,7 @@ import Nav from "../components/Nav.js";
 import RecipeDetails from '../components/RecipeDetails.js';
 import DisplayResult from "../components/DisplayResult.js";
 
-// Define sortRecipes outside of the App component
-function sortRecipes(recipes, filterType) {
-    return [...recipes].sort((a, b) => {
-        if (filterType === "calories") {
-            return a.calories - b.calories;
-        } else if (filterType === "ingredientCount") {
-            return a.ingredientCount - b.ingredientCount;
-        } else if (filterType === "protein%") {
-            return b.proteinAmount - a.proteinAmount;
-        }
-        return 0;
-    });
-}
+
 
 function App() {
     const [activePage, setPage] = useState("page1");
@@ -29,6 +17,19 @@ function App() {
     const [cartIngredients, setCartIngredients] = useState(() => {
         return JSON.parse(localStorage.getItem('cartIngredients') || '[]');
     });
+
+    function sortRecipes(recipes, filterType) {
+        return [...recipes].sort((a, b) => {
+            if (filterType === "calories") {
+                return a.calories - b.calories;
+            } else if (filterType === "ingredientCount") {
+                return a.ingredientCount - b.ingredientCount;
+            } else if (filterType === "protein%") {
+                return b.proteinAmount - a.proteinAmount;
+            }
+            return 0;
+        });
+    }
 
     const prevRecipeList = useRef();
 
@@ -45,14 +46,17 @@ function App() {
     }, [filterType, activePage, recipeList]);
 
     useEffect(() => {
+        if (recipeList.length > 0) {
+            const sortedRecipes = sortRecipes([...recipeList], filterType);
+            setRecipeList(sortedRecipes);
+        }
+    }, [filterType]);
+    
+    useEffect(() => {
         if (activePage === "page1") {
             localStorage.removeItem('cartIngredients');
         }
     }, [activePage]);
-
-    useEffect(() => {
-        console.log("Updated recipe list:", recipeList);
-    }, [recipeList]);
 
     const handleFilterChange = (newFilterType) => {
         setFilterType(prev => newFilterType === prev ? '' : newFilterType);
@@ -93,6 +97,8 @@ function App() {
             }
         } else {
             clearCartAndReturnHome();
+            setFilterType("protein")
+            
         }
     };
 

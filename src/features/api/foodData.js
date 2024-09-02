@@ -6,7 +6,14 @@ import lambImage from '../../assets/images/lamb.webp';
 import turkeyImage from '../../assets/images/turkey.webp';
 import salmonImage from '../../assets/images/salmon.webp';
 import shrimpImage from '../../assets/images/shrimp.webp';
-
+import riceImage from '../../assets/images/rice.webp';
+import pastaImage from '../../assets/images/pasta.webp';
+import broccoliImage from '../../assets/images/broccoli.webp';
+import carrotImage from '../../assets/images/carrot.webp';
+import potatoImage from '../../assets/images/potato.webp';
+import spinachImage from '../../assets/images/spinach.webp';
+import oatsImage from '../../assets/images/oats.webp';
+import quinoaImage from '../../assets/images/quinoa.webp'
 const foodData = [
     {
       image: chickenImage,
@@ -55,6 +62,54 @@ const foodData = [
       title: 'Shrimp',
       kcal: 99,
       type: 'protein',
+    },
+    {
+      image: riceImage,
+      title: 'Rice',
+      kcal: 130,
+      type: 'grain',
+    },
+    {
+      image: pastaImage,
+      title: 'Pasta',
+      kcal: 131,
+      type: 'grain',
+    },
+    {
+      image: broccoliImage,
+      title: 'Broccoli',
+      kcal: 34,
+      type: 'vegetable',
+    },
+    {
+      image: carrotImage,
+      title: 'Carrot',
+      kcal: 41,
+      type: 'vegetable',
+    },
+    {
+      image: potatoImage,
+      title: 'Potato',
+      kcal: 77,
+      type: 'vegetable',
+    },
+    {
+      image: spinachImage,
+      title: 'Spinach',
+      kcal: 23,
+      type: 'vegetable',
+    },
+    {
+      image: oatsImage,
+      title: "Oats",
+      kcal: 389,
+      type: "grain"
+    },
+    {
+      image: quinoaImage,
+      title: "Quinoa",
+      kcal: 120,
+      type: "grain"
     },
     
 ];
