@@ -1,0 +1,68 @@
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em 2em;
+    padding-left: 10%;
+    padding-right: 10%;
+    background-color: #f8f9fa;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #FF7043;
+}
+.cart-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo h1 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #FF7043; /* Adjust logo color */
+    
+}
+.add-icon {
+    border: none;
+    background-color: #FF5722; /* Warm orange color */
+    color: white;
+    border-radius: 1em;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+   
+}
+
+.add-icon:hover {
+    background-color: #E64A19; /* Slightly darker orange on hover */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25); /* Enhanced shadow on hover */
+}
+
+.add-icon:active {
+    background-color: #D84315; /* Even darker color when pressed */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Smaller shadow when pressed */
+}
+
+.add-icon:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0px 0px 0px 3px rgba(255, 87, 34, 0.5); /* Orange outline on focus */
+}
+
+.nostylee {
+    color: #FF5722;
+    font-weight: bold;
+}
+.nostylee {
+    padding: 0px;
+    color: #f8f9fa;
+}
+.add-icon {
+    padding: 1em;
+    border: none;
+    background-color: #FF5722;
+    color: white;
+    border-radius: 1em;
+}

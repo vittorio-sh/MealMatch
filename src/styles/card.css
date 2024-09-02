@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+    color: #3E2723;
+}
+
+.card-ingredient {
+    width: 100%; /* Full width of the grid cell */
+    display: flex; /* Flexbox for centering content */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: space-between; /* Space out content vertically */
+    padding: 1em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Add this new class for the added-to-cart state */
+.added-to-cart {
+    transform: scale(1.05);
+    box-shadow: 0 1px 12px #FF5722;
+}
+
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensure image doesn't overflow */
+    flex-grow: 1; /* Make the image container grow to fill available space */
+}
+
+.img-ingredient {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover; /* Ensure the image covers the container without distortion */
+    border-radius: 1em;
+}
+
+.title {
+    line-height: 3px;
+
+}
+.kcal-add {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #FF7043; /* Warm Orange */
+    font-weight: bold;
+    font-size: 1rem;
+}
+.add-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FF7043; /* Warm Orange */
+    border: none;
+    background: none;
+    text-decoration: none;
+    font-size: 3em;
+}

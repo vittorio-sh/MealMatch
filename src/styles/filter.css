@@ -1,0 +1,104 @@
+/* Global Settings */
+* {
+    box-sizing: border-box;
+}
+
+/* Filter Controls Container */
+.filter-controls {
+    padding-top: 1.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    gap: 1.3em;
+    padding-bottom: 1.5em;
+}
+
+/* Search Input */
+.search-in {
+    display: flex;
+    width: 80%; /* Full width for better responsiveness */
+
+    padding: 1em;
+    padding-left: 1.5em;
+    border-radius: 0.5em;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+    color: #333;
+    background-color: #FFF3E0;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-in::placeholder {
+    color: #888;
+    opacity: 1;
+}
+
+.search-in:focus {
+    border-color: #FF7043;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+    outline: none;
+}
+
+/* Filter Buttons Container */
+.filter-buttons {
+    display: flex;
+    width: 100%; /* Full width for better responsiveness */
+    max-width: 600px; /* Maximum width for larger screens */
+    justify-content: space-around;
+    gap: 1em; /* Adds space between buttons */
+}
+
+/* Individual Filter Button */
+.filter-but {
+    font-size: 1em;
+    padding: 0.8em 1.2em;
+    flex: 1; /* Allow buttons to stretch evenly */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: #FF7043;
+    color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.filter-but:hover {
+    background-color: #FF5722;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.activebtn {
+    background-color: #FF5722;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .search-in, .filter-buttons {
+        width: 90vw; /* Adjust to almost full width on smaller screens */
+        max-width: 100%; /* Remove max-width restriction on small screens */
+    }
+
+    .filter-but {
+        padding: 0.7em 1em; /* Slightly reduce padding for small screens */
+        font-size: 0.9em; /* Adjust font size for better fit */
+    }
+}
+
+@media (max-width: 480px) {
+    .filter-controls {
+        gap: 1em; /* Reduce gap between elements */
+    }
+
+    .filter-but {
+        padding: 0.6em 0.9em; /* Further reduce padding for extra small screens */
+        font-size: 0.85em; /* Smaller font size for very small screens */
+    }
+}

@@ -1,0 +1,19 @@
+.result-container {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    padding-left: 10%;
+    margin-top: 90px;
+    font-size: 1.3em;
+}
+
+.result-info {
+}
+
+.pickedItems {
+    font-weight: bold;
+}
+@media (max-width: 600px) {
+    .result-container {
+        font-size: 3vw;
+    }
+}

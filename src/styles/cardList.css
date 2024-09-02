@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+.ingredientsList {
+    margin-bottom: 5%;
+    display: grid;
+    margin-left: 10%;
+    margin-right: 10%;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
+    gap: 2em;
+    justify-content: center; /* Center the grid within its container */
+}
+
+@media (max-width: 600px) {
+    .ingredientsList {
+        grid-template-columns: 1fr 1fr; /* Exactly two columns on small screens */
+    }
+}
+
+@media (min-width: 601px) {
+    .ingredientsList {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
