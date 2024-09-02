@@ -7,7 +7,7 @@ import Nav from "../components/Nav.js";
 import RecipeDetails from '../components/RecipeDetails.js';
 import DisplayResult from "../components/DisplayResult.js";
 import { useRef } from 'react';
-
+//fixed
 function App() {
     const [activePage, setPage] = useState("page1");
     const [filterType, setFilterType] = useState('protein');
