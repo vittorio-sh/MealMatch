@@ -43,14 +43,15 @@ function App() {
             setRecipeList(sortedRecipes);
         }
         prevRecipeList.current = recipeList;
-    }, [filterType, activePage, recipeList]);
+    }, [filterType, activePage, recipeList]); // Include recipeList here
+    
 
     useEffect(() => {
         if (recipeList.length > 0) {
             const sortedRecipes = sortRecipes([...recipeList], filterType);
             setRecipeList(sortedRecipes);
         }
-    }, [filterType]);
+    }, [filterType, recipeList]);
     
     useEffect(() => {
         if (activePage === "page1") {
