@@ -16,18 +16,20 @@ function App() {
         return JSON.parse(localStorage.getItem('cartIngredients') || '[]');
     });
 
+    const prevRecipeList = useRef(); // Add this line to use a ref for tracking the previous recipe list
+
     useEffect(() => {
         localStorage.setItem('cartIngredients', JSON.stringify(cartIngredients));
     }, [cartIngredients]);
 
     useEffect(() => {
-        if (activePage === "page2" && recipeList.length > 0) {
+        if (activePage === "page2" && recipeList.length > 0 && JSON.stringify(recipeList) !== JSON.stringify(prevRecipeList.current)) {
             const sortedRecipes = sortRecipes(recipeList);
-            if (JSON.stringify(sortedRecipes) !== JSON.stringify(recipeList)) {
-                setRecipeList(sortedRecipes);
-            }
+            setRecipeList(sortedRecipes);
         }
-    }, [filterType, activePage]); // Removed recipeList from dependencies to avoid loop
+        prevRecipeList.current = recipeList; // Update the ref after each effect run
+    }, [filterType, activePage, recipeList]); // Include recipeList in dependencies
+
     
     
 
